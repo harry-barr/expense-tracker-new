@@ -16,12 +16,15 @@
         <legend>Add an Expense</legend>
         <form>
           <input type="text" id="expense-name" placeholder="Name" required />
-          <input
-            type="text"
-            id="expense-category"
-            placeholder="Category"
-            required
-          />
+          <input type="date" id="expense-date" required />
+          <select id="expense-category" required>
+            <option value="">Category</option>
+            <option value="groceries">Groceries</option>
+            <option value="car">Car</option>
+            <option value="bills">Bills</option>
+            <option value="food">Food</option>
+            <option value="misc">Misc</option>
+          </select>
           <input
             type="number"
             id="expense-amount"
@@ -31,8 +34,10 @@
           />
           <textarea
             name="description"
-            id="description-expense"
+            id="expense-description"
             placeholder="Description (optional)"
+            rows="7"
+            cols="25"
           ></textarea>
           <button type="submit" id="submit-expense-btn">Add</button>
         </form>
@@ -40,13 +45,20 @@
       <fieldset>
         <legend>Add an Income</legend>
         <form>
-          <input type="text" id="income-name" placeholder="Name" required />
           <input
             type="text"
-            id="income-category"
-            placeholder="Category"
+            id="income-name"
+            placeholder="Name"
             required
-          />
+          /><input type="date" id="expense-date" required />
+          <select id="income-category" required>
+            <option value="">Category</option>
+            <option value="groceries">Groceries</option>
+            <option value="car">Car</option>
+            <option value="bills">Bills</option>
+            <option value="food">Food</option>
+            <option value="misc">Misc</option>
+          </select>
           <input
             type="number"
             id="income-amount"
@@ -56,12 +68,16 @@
           />
           <textarea
             name="description"
-            id="description-income"
+            id="income-description"
             placeholder="Description (optional)"
+            rows="7"
+            cols="25"
           ></textarea>
           <button type="submit" id="submit-expense-btn">Add</button>
         </form>
       </fieldset>
     </div>
+    <script src="script.js" type="module"></script>
+    <script src="expense-classes.js"></script>
   </body>
 </html>

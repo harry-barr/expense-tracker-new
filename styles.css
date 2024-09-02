@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #002339;
+  color: #019f55;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header h1 {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+}
+.forms-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-direction: row;
+}
+fieldset {
+  min-width: 400px;
+  border-radius: 20px;
+  border: 2px solid white;
+  margin-bottom: 40px;
+}
+fieldset legend {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+#expense-name,
+#income-name,
+#income-category,
+#income-amount,
+#expense-amount,
+#expense-date,
+#income-date {
+  padding: 15px;
+  background: white;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  color: grey;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#expense-date,
+#income-date {
+  min-width: 240px;
+}
+
+#expense-category,
+#income-category {
+  padding: 17px;
+  background: white;
+  border-radius: 20px;
+  color: grey;
+  font-weight: bold;
+  font-size: 1rem;
+  min-width: 240px;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#expense-name,
+#income-name {
+  margin-top: 20px;
+}
+
+#expense-description,
+#income-description {
+  background: white;
+  border-radius: 20px;
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+}
+#submit-expense-btn,
+#submit-income-btn {
+  padding: 15px;
+  background: rgb(235, 27, 27);
+  font-weight: bold;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+#submit-expense-btn:hover,
+#submit-income-btn:hover {
+  background: #019f55;
+  color: white;
+}
