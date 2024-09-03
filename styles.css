@@ -52,9 +52,20 @@ form {
   border: none;
   border-radius: 20px;
   text-align: center;
-  color: grey;
+  color: black;
   font-weight: bold;
   font-size: 1rem;
+}
+#expense-name::placeholder,
+#income-name::placeholder,
+#income-category::placeholder,
+#income-amount::placeholder,
+#expense-amount::placeholder,
+#expense-date::placeholder,
+#income-date::placeholder,
+#expense-description::placeholder,
+#income-description::placeholder {
+  color: black;
 }
 
 #expense-date,
@@ -67,7 +78,7 @@ form {
   padding: 17px;
   background: white;
   border-radius: 20px;
-  color: grey;
+  color: black;
   font-weight: bold;
   font-size: 1rem;
   min-width: 240px;
@@ -106,5 +117,81 @@ input::-webkit-inner-spin-button {
 #submit-expense-btn:hover,
 #submit-income-btn:hover {
   background: #019f55;
+  color: white;
+}
+
+/* Table styling */
+.table-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+table {
+  max-width: 400px;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* Table headers */
+th {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  padding: 10px; /* Padding inside the header cells */
+  text-align: left; /* Align text to the left */
+  font-weight: bold;
+  border: 1px solid #ddd; /* Light grey borders */
+}
+
+/* Table rows */
+tr {
+  border-bottom: 1px solid #ddd; /* Add a light grey border below each row */
+}
+
+/* Table data cells */
+td {
+  padding: 10px; /* Padding inside the data cells */
+  text-align: left; /* Align text to the left */
+  border: 1px solid #ddd; /* Light grey borders */
+}
+
+/* Zebra striping for rows */
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; /* Light grey background for odd rows */
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+  background-color: #f1f1f1; /* Slightly darker grey when hovering over a row */
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+  table {
+    font-size: 14px; /* Smaller font size on smaller screens */
+  }
+  th,
+  td {
+    padding: 8px; /* Reduce padding on smaller screens */
+  }
+}
+.delete-cell {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.delete-cell button {
+  padding: 5px;
+  background: white;
+  border-radius: 10px;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-cell button:hover {
+  background-color: rgb(235, 27, 27);
   color: white;
 }

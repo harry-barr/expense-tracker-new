@@ -1,10 +1,14 @@
-class Expense {
+export class Expense {
   constructor(name, date, category, amount, desc) {
+    this._id = Date.now();
     this._name = name;
-    this._date = date;
+    this._date = new Date(date);
     this._category = category;
     this._amount = amount;
-    this._desc = desc;
+    this._desc = desc || "";
+  }
+  get id() {
+    return this._id;
   }
   get name() {
     return this._name;
@@ -30,34 +34,106 @@ class Expense {
   }
 }
 
-class Income extends Expense {
+export class Income extends Expense {
   constructor(name, date, category, amount, desc) {
     super(name, date, category, amount, desc);
   }
 }
 
-class ExpenseTracker {
+// Base Tracker class
+export class Tracker {
   constructor() {
-    this._expenses = [];
+    this._items = [];
   }
-  addExpense(expense) {
-    if (expense instanceof Expense) {
-      this._expenses.push(expense);
+
+  addItem(item, type) {
+    if (item instanceof type) {
+      this._items.push(item);
+      this.saveItemsToStorage();
     } else {
-      throw new Error("Expense not found");
+      throw new Error(`${type.name} not found`);
     }
+  }
+
+  removeItem(item, type) {
+    if (!(item instanceof type)) {
+      throw new Error(`Invalid item type. Expected ${type.name}.`);
+    }
+    const index = this._items.indexOf(item);
+    if (index !== -1) {
+      this._items.splice(index, 1);
+      this.saveItemsToStorage();
+    } else {
+      throw new Error("Item not found in tracker.");
+    }
+    const row = document.querySelector(`[data-id="${item.id}"]`);
+    if (row) {
+      row.remove();
+    } else {
+      throw new Error(`${type.name} not found in the tracker`);
+    }
+  }
+
+  saveItemsToStorage() {
+    localStorage.setItem("trackerItems", JSON.stringify(this._items));
+  }
+  loadItemsFromStorage() {
+    const items = localStorage.getItem("trackerItems");
+    return items ? JSON.parse(items) : [];
+  }
+
+  filterByCategory(category) {
+    return this._items.filter(
+      (item) => category.toLowerCase() === item.category.toLowerCase()
+    );
+  }
+
+  filterByDateRange(startDate, endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    return this._items.filter((item) => {
+      const itemDate = new Date(item.date);
+      return itemDate >= start && itemDate <= end;
+    });
+  }
+
+  sortByAmountAscending() {
+    return this._items.sort((itemA, itemB) => itemA.amount - itemB.amount);
+  }
+
+  sortByAmountDescending() {
+    return this._items.sort((itemA, itemB) => itemB.amount - itemA.amount);
+  }
+
+  calculateTotal() {
+    return this._items.reduce((total, current) => (total += current.amount), 0);
   }
 }
 
-class Incometracker {
+// ExpenseTracker class
+export class ExpenseTracker extends Tracker {
   constructor() {
-    this._incomes = [];
+    super();
   }
+
+  addExpense(expense) {
+    this.addItem(expense, Expense);
+  }
+  removeExpense(expense) {
+    this.removeItem(expense, Expense);
+  }
+}
+
+// IncomeTracker class
+export class IncomeTracker extends Tracker {
+  constructor() {
+    super();
+  }
+
   addIncome(income) {
-    if (income instanceof Income) {
-      this._incomes.push(income);
-    } else {
-      throw new Error("Income not found");
-    }
+    this.addItem(income, Income);
+  }
+  removeIncome(income) {
+    this.removeItem(income, Income);
   }
 }

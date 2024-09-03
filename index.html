@@ -50,10 +50,10 @@
             id="income-name"
             placeholder="Name"
             required
-          /><input type="date" id="expense-date" required />
+          /><input type="date" id="income-date" required />
           <select id="income-category" required>
             <option value="">Category</option>
-            <option value="groceries">Groceries</option>
+            <option value="work">Work</option>
             <option value="car">Car</option>
             <option value="bills">Bills</option>
             <option value="food">Food</option>
@@ -73,11 +73,43 @@
             rows="7"
             cols="25"
           ></textarea>
-          <button type="submit" id="submit-expense-btn">Add</button>
+          <button type="submit" id="submit-income-btn">Add</button>
         </form>
       </fieldset>
     </div>
-    <script src="script.js" type="module"></script>
-    <script src="expense-classes.js"></script>
+    <div class="table-container">
+      <table id="expenseTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="table-row-expense"></tr>
+          <!-- Additional rows can be added here -->
+        </tbody>
+      </table>
+      <table id="incomeTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr></tr>
+          <!-- Additional rows can be added here -->
+        </tbody>
+      </table>
+    </div>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="expense-classes.js"></script>
   </body>
 </html>
